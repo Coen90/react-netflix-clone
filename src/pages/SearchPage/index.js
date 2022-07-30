@@ -55,6 +55,7 @@ function SearchPage() {
               </div>
             );
           }
+          return null;
         })}
       </section>
     ) : (

@@ -21,7 +21,7 @@ function Row({ isLargeRow, title, id, fetchUrl }) {
 
   useEffect(() => {
     fetchMovieData();
-  }, []);
+  });
 
   const fetchMovieData = async () => {
     const request = await axios.get(fetchUrl);
