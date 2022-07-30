@@ -1,32 +1,30 @@
-import React, {useState, useEffect} from 'react';
-import { useNavigate } from 'react-router-dom'
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Nav.css";
 
 function Nav() {
-
   const [show, setShow] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      if(window.scrollY > 50) {
+      if (window.scrollY > 50) {
         setShow(true);
       } else {
         setShow(false);
       }
-    })
-  
+    });
+
     return () => {
       window.removeEventListener("scroll", () => {});
-    }
-  }, [])
+    };
+  }, []);
 
   const handleChange = (e) => {
     setSearchValue(e.target.value);
     navigate(`/search?q=${e.target.value}`);
-  }
-  
+  };
 
   return (
     <nav className={`nav ${show && "nav__black"}`}>
@@ -37,7 +35,13 @@ function Nav() {
         onClick={() => navigate(`/`)}
       />
 
-      <input value={searchValue} onChange={handleChange} className="nav__input" type="text" placeholder='영화를 검색해주세요.' />
+      <input
+        value={searchValue}
+        onChange={handleChange}
+        className='nav__input'
+        type='text'
+        placeholder='영화를 검색해주세요.'
+      />
 
       <img
         alt='User logged'
@@ -45,7 +49,7 @@ function Nav() {
         className='nav__avatar'
       />
     </nav>
-  )
+  );
 }
 
-export default Nav
+export default Nav;
